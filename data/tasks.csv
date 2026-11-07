@@ -1,0 +1,13 @@
+task_id,title,owner,effort_hours,due_date,status,priority
+T-101,Weekly client status digest,Bassam,4,2026-11-09,open,high
+T-102,Onboard new client account (Acme Retail),Bassam,10,2026-11-12,open,high
+T-103,Update SOP: invoice follow-up process,Bassam,3,2026-11-10,open,medium
+T-104,Prepare Q4 delivery performance report,Bassam,8,2026-11-13,open,high
+T-105,Reply to pending vendor quotes,Ayesha,2,2026-11-09,open,medium
+T-106,Reconcile October invoices,Ayesha,6,2026-11-11,open,high
+T-107,Schedule interviews for ops assistant role,Ayesha,3,2026-11-12,open,low
+T-108,Fix broken links on client portal,Omar,5,2026-11-10,open,medium
+T-109,Test new follow-up email templates,Omar,4,2026-11-13,open,medium
+T-110,Archive completed October tickets,Omar,2,2026-11-09,done,low
+T-111,Urgent: resolve delayed shipment (Order #8842),Bassam,6,2026-11-06,open,high
+T-112,Prepare handover notes for weekend cover,Ayesha,2,2026-11-05,open,medium
