@@ -1,5 +1,8 @@
 """Tests for capacity.py — run with: python3 test_capacity.py"""
 
+import os
+import tempfile
+
 import pandas as pd
 
 from capacity import build_report, load_tasks, plan_capacity, working_days
@@ -61,6 +64,25 @@ def test_sample_csv_loads_and_plans():
     report = build_report(df, day_load, flags, pd.Timestamp("2026-11-06"), 6.0)
     assert "OPS CAPACITY PLAN" in report
     assert "OVERDUE" in report  # T-112 is due 2026-11-05
+
+
+def test_empty_tasks_csv():
+    path = None
+    try:
+        with tempfile.NamedTemporaryFile(mode="w", suffix=".csv", delete=False) as handle:
+            handle.write("task_id,title,owner,effort_hours,due_date,status\n")
+            path = handle.name
+        df = load_tasks(path)
+        day_load, flags = plan_capacity(df, START, 6.0)
+        report = build_report(df, day_load, flags, START, 6.0)
+        assert df.empty
+        assert day_load.empty
+        assert flags == []
+        assert "Tasks: 0 total, 0 open, 0 done, 0.0 open hours" in report
+        assert "(no open work scheduled)" in report
+    finally:
+        if path is not None:
+            os.unlink(path)
 
 
 if __name__ == "__main__":
